@@ -44,7 +44,7 @@ if (!Int32.TryParse(Console.ReadLine(), out int firstNumb))     //проверя
 
 if (!IsNaturalNumb(firstNumb)) return;          // проверяю, является ли введенное число натуральным
 
-Console.WriteLine("Введите второе число");
+Console.WriteLine("Введите второе натуральное число");
 
 if (!Int32.TryParse(Console.ReadLine(), out int secondNumb))    //проверяю, является ли введенная строка числом
 {
