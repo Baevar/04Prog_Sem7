@@ -7,37 +7,55 @@
 // M = 4; N = 8 -> "4, 5, 6, 7, 8"
 
 
-void PrintNaturalNumbers(int firstNumb, int secondNumb)
-{
+// Мой комментарий к задаче
 
-    
-    if (firstNumb <= secondNumb)
-    {
-        if (firstNumb > 0)
-        {
-            Console.Write($"{firstNumb} ");
-        }
-    }
+//Не придумал как оформить в функцию проверки, что введеная строка является числом, поэтому нарушил правило DRY. Но главное работает
+
+void PrintNaturalNumbers(int firstNumb, int secondNumb, int count)      // Рекурсивная функция вывода натуральных чисел
+{
+    if (firstNumb != secondNumb)
+        Console.Write($"{firstNumb}, ");
     else
     {
+        Console.Write($"{firstNumb} ");
         return;
     }
-    PrintNaturalNumbers(firstNumb+1, secondNumb);
+    firstNumb += count;
+    PrintNaturalNumbers(firstNumb, secondNumb, count);
 }
 
-
-Console.WriteLine("Введите первое число");
-int firstNumb = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Введите второе число");
-int secondNumb = Convert.ToInt32(Console.ReadLine());
-
-Console.WriteLine("Натуральные числа в промежутке от первого до второго числа:");
-
-if (firstNumb > secondNumb)
+bool IsNaturalNumb(int numb)        // проверка, является ли введденое число натуральным
 {
-    Console.WriteLine("Не корректный ввод");
+    if (numb < 1)
+    {
+        Console.WriteLine("Вы ввели не натуральное число, некорректный ввод");
+        return false;
+    }
+    return true;
+}
+
+Console.WriteLine("Введите первое натуральное число");
+
+if (!Int32.TryParse(Console.ReadLine(), out int firstNumb))     //проверяю, является ли введенная строка числом
+{
+    Console.WriteLine("Некорректный ввод");
     return;
 }
 
-PrintNaturalNumbers(firstNumb, secondNumb);
+if (!IsNaturalNumb(firstNumb)) return;          // проверяю, является ли введенное число натуральным
+
+Console.WriteLine("Введите второе число");
+
+if (!Int32.TryParse(Console.ReadLine(), out int secondNumb))    //проверяю, является ли введенная строка числом
+{
+    Console.WriteLine("Некорректный ввод");
+    return;
+}
+
+if (!IsNaturalNumb(secondNumb)) return;         // проверяю, является ли введенное число натуральным
+
+int count = 1;
+
+if (firstNumb > secondNumb) count = -1;         // проверяю, какое из чисел больше 
+
+PrintNaturalNumbers(firstNumb, secondNumb, count);
