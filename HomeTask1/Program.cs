@@ -10,6 +10,7 @@
 void PrintNaturalNumbers(int firstNumb, int secondNumb)
 {
 
+    
     if (firstNumb <= secondNumb)
     {
         if (firstNumb > 0)
@@ -21,8 +22,7 @@ void PrintNaturalNumbers(int firstNumb, int secondNumb)
     {
         return;
     }
-    firstNumb++;
-    PrintNaturalNumbers(firstNumb, secondNumb);
+    PrintNaturalNumbers(firstNumb+1, secondNumb);
 }
 
 
