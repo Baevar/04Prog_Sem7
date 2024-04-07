@@ -5,18 +5,17 @@
 // [1, 2, 5, 0, 10, 34] => 34 10 0 5 2 1 
 
 
-void ReverseArray(int[] array, int count)       // рекурсивная функция для вывода массива в обтратном порядке
+void PrintReverseArray(int[] array, int count)       // рекурсивная функция для вывода массива в обтратном порядке
 {
 
-    if (array.Length == count)
+    if (count < 0)
     {
         return;
     }
-    count++;
 
-    ReverseArray(array, count);
+    Console.Write($"{array[count]} ");
 
-    Console.Write(array[count - 1] + " ");
+    PrintReverseArray(array, count - 1);
 
 }
 
@@ -76,12 +75,10 @@ int[] array = CreateRandomArray(size);
 
 Console.WriteLine("Исходный массив:");
 
-
 PrintArray(array);
 
 Console.WriteLine();
 
-Console.WriteLine("Результат вывода");
+Console.WriteLine("Вывод массива в обратном порядке на консоль:");
 
-int count = 0;
-ReverseArray(array, count);
+PrintReverseArray(array, array.Length - 1);
