@@ -5,7 +5,7 @@
 // m = 2, n = 3 -> A(m,n) = 29
 // m = 11, n = 3 -> A(m,n) = 16381
 
-//Мой комментарий по задаче
+//Мой комментарий по задаче:
 
 // В примерах выше коэффициенты m и n перепутаны местати. 
 // Согласно готовой таблице Решения функции Аккермана при m = 2, n = 3 результат будет равен 9
@@ -14,7 +14,7 @@
 // Собственно можно сделать вывод, что в примере коэффициенты функции m и n перепутаны местами.
 // Решение ниже корректно.
 
-int FunkAckerman(int firstNumb, int secondNumb)
+int FuncAckerman(int firstNumb, int secondNumb)
 {
     if (firstNumb == 0)
     {
@@ -22,10 +22,10 @@ int FunkAckerman(int firstNumb, int secondNumb)
     }
     else if (secondNumb == 0)
     {
-        return FunkAckerman(firstNumb - 1, 1);
+        return FuncAckerman(firstNumb - 1, 1);
     }
 
-    return FunkAckerman(firstNumb - 1, FunkAckerman(firstNumb, secondNumb - 1));
+    return FuncAckerman(firstNumb - 1, FuncAckerman(firstNumb, secondNumb - 1));
 }
 
 
@@ -60,5 +60,5 @@ if (!Int32.TryParse(Console.ReadLine(), out int secondNumb))    //проверя
 
 if (!IsNaturalNumb(secondNumb)) return;         // проверяю, является ли введенное число натуральным
 
-int result = FunkAckerman(firstNumb, secondNumb);
+int result = FuncAckerman(firstNumb, secondNumb);
 Console.WriteLine($"Результат функции Аккермана пары чисел {firstNumb} и {secondNumb} равен = {result}");
